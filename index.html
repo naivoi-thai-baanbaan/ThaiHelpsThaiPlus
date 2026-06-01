@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#f57c00" />
+  <meta name="description" content="ไทยช่วยไทย พลัส - โปรแกรมคำนวณโครงการช่วยลดค่าครองชีพ 60/40" />
+  <title>ไทยช่วยไทย พลัส</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- การ์ดหลัก -->
+    <section class="card card--main">
+      <header class="brand">
+        <img class="brand__logo" src="assets/logo.png" alt="โลโก้ ไทยช่วยไทย พลัส" />
+        <h1 class="brand__title">ไทยช่วยไทย พลัส</h1>
+        <p class="brand__subtitle">ลดภาระ ลดค่าครองชีพ</p>
+      </header>
+
+      <div class="datetime" aria-live="polite">
+        <span class="datetime__icon" aria-hidden="true">📅</span>
+        <span id="thaiDate" class="datetime__date">—</span>
+        <span class="datetime__dot" aria-hidden="true">•</span>
+        <span id="clock" class="datetime__time">00:00:00</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__label"><span aria-hidden="true">💵</span> วันนี้เหลือ</div>
+          <div class="stat__value">
+            <span id="dailyLeft">200</span><span class="stat__cap">/200</span>
+          </div>
+        </div>
+        <div class="stat__divider" aria-hidden="true"></div>
+        <div class="stat">
+          <div class="stat__label"><span aria-hidden="true">🗓️</span> เดือนนี้เหลือ</div>
+          <div class="stat__value">
+            <span id="monthlyLeft">1000</span><span class="stat__cap">/1000</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="calcForm" class="form" autocomplete="off" novalidate>
+        <label class="form__label" for="amount">
+          <span aria-hidden="true">🛒</span> จำนวนเงินที่ต้องการซื้อ
+        </label>
+        <div class="form__field">
+          <input
+            id="amount"
+            class="form__input"
+            type="number"
+            inputmode="decimal"
+            min="1"
+            step="0.01"
+            placeholder="เช่น 333"
+          />
+          <span class="form__unit">บาท</span>
+        </div>
+
+        <p id="formError" class="form__error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button type="submit" id="btnCalc" class="btn btn--primary">
+            <span aria-hidden="true">🧮</span> คำนวณ
+          </button>
+          <button type="button" id="btnSave" class="btn btn--ghost" disabled>
+            <span aria-hidden="true">💾</span> บันทึก
+          </button>
+        </div>
+
+        <div id="result" class="result" hidden>
+          <div class="result__row">
+            <span class="result__label"><span aria-hidden="true">🙌</span> รัฐช่วย</span>
+            <span class="result__value result__value--gov" id="resGov">0.00 บาท</span>
+          </div>
+          <div class="result__row">
+            <span class="result__label"><span aria-hidden="true">🧍</span> คุณจ่าย</span>
+            <span class="result__value result__value--pay" id="resPay">0.00 บาท</span>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- การ์ดประวัติ -->
+    <section class="card card--history">
+      <div class="history__head">
+        <h2 class="history__title"><span aria-hidden="true">🕘</span> ประวัติการใช้จ่าย</h2>
+        <button type="button" id="btnClear" class="btn btn--danger-outline">
+          <span aria-hidden="true">🗑️</span> ล้างทั้งหมด
+        </button>
+      </div>
+
+      <div class="table">
+        <div class="table__head">
+          <span>วันที่</span>
+          <span>ยอดซื้อ</span>
+          <span>รัฐช่วย</span>
+          <span>คุณจ่าย</span>
+          <span aria-hidden="true"></span>
+        </div>
+        <div id="historyBody" class="table__body">
+          <p id="historyEmpty" class="table__empty">ยังไม่มีรายการใช้จ่าย</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="footer__code" aria-hidden="true">&lt;/&gt;</span>
+      พัฒนาโดย <strong>ไนวอย ฅ.ไทบ้านๆ</strong>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
