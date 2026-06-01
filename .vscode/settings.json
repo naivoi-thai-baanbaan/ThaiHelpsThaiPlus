@@ -1,0 +1,33 @@
+{
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.indexing": false,
+  "python.analysis.exclude": [
+    "**/node_modules/**",
+    "**/__pycache__/**",
+    "**/frontend/dist/**",
+    "**/frontend/node_modules/**",
+    "**/.venv/**",
+    "**/env/**"
+  ],
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "PowerShell (venv)": {
+      "source": "PowerShell",
+      "args": [
+        "-NoExit",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "Set-Location -LiteralPath '${workspaceFolder}'; . '${workspaceFolder}/env.ps1'"
+      ]
+    }
+  }
+}
